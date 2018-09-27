@@ -19,7 +19,7 @@
 #include <time.h>
 
 /// UUT - Unit-Under-Test
-struct tm getNextDayDate(struct tm date);
+struct tm get_next_day_date(struct tm date);
 
 /// Epsilon for double comparisons.
 #define EPSILON 0.01
@@ -44,7 +44,7 @@ static void test_next_date(void)
     struct tm nextDate = { 0 };
     strptime("12.12.2000", "%d.%m.%Y", &date);
 
-    nextDate = getNextDayDate(date);
+    nextDate = get_next_day_date(date);
     CU_ASSERT_EQUAL(nextDate.tm_mday, 13);
     CU_ASSERT_EQUAL(nextDate.tm_mon, 12 - 1);
     CU_ASSERT_EQUAL(nextDate.tm_year, 2000 - 1900);
@@ -56,7 +56,7 @@ static void test_next_date_year_change(void)
     struct tm nextDate = { 0 };
 
     strptime("31.12.2000", "%d.%m.%Y", &date);
-    nextDate = getNextDayDate(date);
+    nextDate = get_next_day_date(date);
     CU_ASSERT_EQUAL(nextDate.tm_mday, 1);
     CU_ASSERT_EQUAL(nextDate.tm_mon, 1 - 1);
     CU_ASSERT_EQUAL(nextDate.tm_year, 2001 - 1900);
@@ -68,7 +68,7 @@ static void test_next_date_leap_year(void)
     struct tm nextDate = { 0 };
 
     strptime("28.02.2000", "%d.%m.%Y", &date);
-    nextDate = getNextDayDate(date);
+    nextDate = get_next_day_date(date);
     CU_ASSERT_EQUAL(nextDate.tm_mday, 29);
     CU_ASSERT_EQUAL(nextDate.tm_mon, 2 - 1);
     CU_ASSERT_EQUAL(nextDate.tm_year, 2000 - 1900);
@@ -80,7 +80,7 @@ static void test_next_date_no_leap_year(void)
     struct tm nextDate = { 0 };
 
     strptime("28.02.2001", "%d.%m.%Y", &date);
-    nextDate = getNextDayDate(date);
+    nextDate = get_next_day_date(date);
     CU_ASSERT_EQUAL(nextDate.tm_mday, 1);
     CU_ASSERT_EQUAL(nextDate.tm_mon, 3 - 1);
     CU_ASSERT_EQUAL(nextDate.tm_year, 2001 - 1900);

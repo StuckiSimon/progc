@@ -17,11 +17,11 @@
 
 #define MAX_STRING_SIZE 10 + 1
 
-char *readInput()
+static char *read_input()
 {
     (void)printf("Enter a date (dd.mm.yyyy):\t");
     char *text = malloc(MAX_STRING_SIZE * sizeof(const char));
-    fgets(text, MAX_STRING_SIZE, stdin);
+    (void)fgets(text, MAX_STRING_SIZE, stdin);
     if ((strlen(text) > 0) && (text[strlen(text) - 1] == '\n'))
         text[strlen(text) - 1] = '\0';
     return text;
@@ -35,14 +35,14 @@ char *readInput()
 int main(void)
 {
     struct tm date = { 0 };
-    char *input = readInput();
+    char *input = read_input();
 
     // parse user input to date
     if (strptime(input, "%d.%m.%Y", &date) == NULL) {
-        printf("Cannot parse date\n");
+        (void)printf("Cannot parse date\n");
         return EXIT_FAILURE;
     }
-    date = getNextDayDate(date);
-    (void)printNextDay(date);
+    date = get_next_day_date(date);
+    (void)print_next_day(date);
     return EXIT_SUCCESS;
 }

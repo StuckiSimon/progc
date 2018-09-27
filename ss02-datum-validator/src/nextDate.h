@@ -4,8 +4,17 @@
 
 #include <time.h>
 
-struct tm getNextDayDate(struct tm date);
+/**
+ * @brief           calculates the next date
+ * @param[in] struct tm  Date.
+ * @return          Next date.
+ */
+struct tm get_next_day_date(struct tm date);
 
-void printNextDay(struct tm date);
+/**
+ * @brief           Prints the next date
+ * @param[in] struct tm  Date.
+ */
+void print_next_day(struct tm date);
 
 #endif
