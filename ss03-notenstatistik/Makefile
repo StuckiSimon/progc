@@ -20,6 +20,9 @@ TSTOBJECTS    := $(TSTSOURCES:%.c=%.o) # list of gcc -c  ... produced *.o files
 TSTDEPS       := $(TSTSOURCES:%.c=%.d) # list of gcc -MD ... produced *.d files
 TSTTARGET     := $(CURDIR)/tests/runtest
 
+# targets which get always visited (without checking any up-to-date state)
+.PHONY: default clean test doc mkdir run
+
 default: $(FULLTARGET)
 	$(MAKE) run
 	@echo "#### $< built ####"
