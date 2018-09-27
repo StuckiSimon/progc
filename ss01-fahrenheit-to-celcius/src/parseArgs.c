@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-options parseArgs(options DEFAULT_OPTIONS, int argc, char *argv[])
+options parse_args(options DEFAULT_OPTIONS, int argc, char *argv[])
 {
     options opts = DEFAULT_OPTIONS;
     int c;

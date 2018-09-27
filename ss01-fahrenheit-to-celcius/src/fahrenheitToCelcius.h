@@ -2,12 +2,12 @@
 #define _FAHRENHEIT_TO_CELCIUS_H_
 
 /**
- * @brief           Entry point for calculating.
- * @param[in] text  Text to be processed.
- * @return          Calculated value.
+ * @brief           Turns a fahrenheit value to a celcius value
+ * @param[in] fahrenheit  Value in fahrenheit.
+ * @return          Value in celcius.
  */
-double fahrenheitToCelcius(const int fahrenheit);
+double fahrenheit_to_celcius(const int fahrenheit);
 
-void printTemparatureTable(const int MIN, const int MAX, const int STEP);
+void print_temparature_table(const int min, const int max, const int step);
 
 #endif

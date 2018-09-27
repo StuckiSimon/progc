@@ -30,9 +30,9 @@ int main(int argc, char *argv[])
 {
     const options DEFAULT_OPTIONS = { -100, 200, 20 };
 
-    const options opts = parseArgs(DEFAULT_OPTIONS, argc, argv);
+    const options opts = parse_args(DEFAULT_OPTIONS, argc, argv);
 
-    (void)printTemparatureTable(opts.min, opts.max, opts.step);
+    (void)print_temparature_table(opts.min, opts.max, opts.step);
 
     return EXIT_SUCCESS;
 }

@@ -18,7 +18,7 @@
 #include <stdlib.h>
 
 /// UUT - Unit-Under-Test
-double fahrenheitToCelcius(int f);
+double fahrenheit_to_celcius(int f);
 
 /// Epsilon for double comparisons.
 #define EPSILON 0.01
@@ -42,10 +42,10 @@ static void test_fahrenheit_to_celcius(void)
     // arrange
     // act
     // assert
-    CU_ASSERT_DOUBLE_EQUAL(fahrenheitToCelcius(-20), -28.89, EPSILON);
-    CU_ASSERT_DOUBLE_EQUAL(fahrenheitToCelcius(0), -17.78, EPSILON);
-    CU_ASSERT_DOUBLE_EQUAL(fahrenheitToCelcius(40), 4.44, EPSILON);
-    CU_ASSERT_DOUBLE_EQUAL(fahrenheitToCelcius(120), 48.89, EPSILON);
+    CU_ASSERT_DOUBLE_EQUAL(fahrenheit_to_celcius(-20), -28.89, EPSILON);
+    CU_ASSERT_DOUBLE_EQUAL(fahrenheit_to_celcius(0), -17.78, EPSILON);
+    CU_ASSERT_DOUBLE_EQUAL(fahrenheit_to_celcius(40), 4.44, EPSILON);
+    CU_ASSERT_DOUBLE_EQUAL(fahrenheit_to_celcius(120), 48.89, EPSILON);
 }
 
 /**
