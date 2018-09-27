@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-int countWords(char *str)
+int count_words(char *str)
 {
     char *part;
     int count = 0;

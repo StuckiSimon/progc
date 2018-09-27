@@ -18,7 +18,7 @@
 #include <stdlib.h>
 
 /// UUT - Unit-Under-Test
-int countWords(char *str);
+int count_words(char *str);
 
 /// Epsilon for double comparisons.
 #define EPSILON 0.001
@@ -42,7 +42,7 @@ static void test_count_words(void)
     // arrange
     // act
     char s[] = "werewr rewqrw rewqr";
-    int d = countWords(s);
+    int d = count_words(s);
     // assert
     CU_ASSERT_DOUBLE_EQUAL(d, 3, EPSILON);
 }
@@ -52,7 +52,7 @@ static void test_count_words_empty(void)
     // arrange
     // act
     char s[] = "";
-    int d = countWords(s);
+    int d = count_words(s);
     // assert
     CU_ASSERT_DOUBLE_EQUAL(d, 0, EPSILON);
 }

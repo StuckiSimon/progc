@@ -2,10 +2,10 @@
 #define _COUNT_WORDS_H_
 
 /**
- * @brief           Entry point for calculating.
+ * @brief           Counts the words of a string (words are delimitted by spaces or tabs).
  * @param[in] text  Text to be processed.
- * @return          Calculated value.
+ * @return          word count.
  */
-int countWords(char *str);
+int count_words(char *str);
 
 #endif

@@ -15,7 +15,7 @@
 
 #define MAX_STRING_SIZE 256
 
-char *readAndParseInput(char *text)
+static char *readAndParseInput(char *text)
 {
     fgets(text, MAX_STRING_SIZE, stdin);
     if ((strlen(text) > 0) && (text[strlen(text) - 1] == '\n'))
@@ -30,18 +30,18 @@ char *readAndParseInput(char *text)
  */
 int main(void)
 {
-    int wordCount = 0;
-    int charCount = 0;
+    int word_count = 0;
+    int char_count = 0;
     char *text = malloc(MAX_STRING_SIZE);
 
     text = readAndParseInput(text);
 
-    charCount = strlen(text);
+    char_count = strlen(text);
 
-    wordCount = countWords(text);
+    word_count = count_words(text);
 
-    (void)printf("Anzahl Zeichen:\t%3d\n", charCount);
-    (void)printf("Anzahl Wörter:\t%3d\n", wordCount);
+    (void)printf("Anzahl Zeichen:\t%3d\n", char_count);
+    (void)printf("Anzahl Wörter:\t%3d\n", word_count);
 
     return EXIT_SUCCESS;
 }

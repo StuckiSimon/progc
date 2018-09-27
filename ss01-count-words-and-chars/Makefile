@@ -20,13 +20,13 @@ TSTOBJECTS    := $(TSTSOURCES:%.c=%.o) # list of gcc -c  ... produced *.o files
 TSTDEPS       := $(TSTSOURCES:%.c=%.d) # list of gcc -MD ... produced *.d files
 TSTTARGET     := $(CURDIR)/tests/runtest
 
-doc:
-	doxygen ../Doxyfile > /dev/null
-	@echo "#### $@ done ####"
-
 default: $(FULLTARGET)
 	$(MAKE) run
 	@echo "#### $< built ####"
+
+doc:
+	doxygen ../Doxyfile > /dev/null
+	@echo "#### $@ done ####"
 
 run:
 	$(TARGET)
