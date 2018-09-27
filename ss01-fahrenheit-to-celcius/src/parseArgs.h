@@ -4,9 +4,10 @@
 #include "options.h"
 
 /**
- * @brief           Entry point for calculating.
- * @param[in] text  Text to be processed.
- * @return          Calculated value.
+ * @brief           parses command line arguments to options with default options as fallback.
+ * @param[in] options  Default options.
+ * @param[in] argc, *argv
+ * @return          options.
  */
 options parse_args(options DEFAULT_OPTIONS, int argc, char *argv[]);
 
