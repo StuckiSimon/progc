@@ -11,11 +11,11 @@
  * @file
  * @brief Test suite for the given package.
  */
+#include "../../../testlib/src/test_utils.h"
+#include "CUnit/Basic.h"
+#include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <math.h>
-#include "CUnit/Basic.h"
-#include "../../../testlib/src/test_utils.h"
 
 /// UUT - Unit-Under-Test
 int countWords(char *str);
@@ -26,35 +26,35 @@ int countWords(char *str);
 // setup & cleanup
 static int setup(void)
 {
-	// Do nothing.
-	return 0; // success
+    // Do nothing.
+    return 0; // success
 }
 
 static int teardown(void)
 {
-	// Do nothing.
-	return 0; // success
+    // Do nothing.
+    return 0; // success
 }
 
 // tests
 static void test_count_words(void)
 {
-	// arrange
-	// act
-	char s[] = "werewr rewqrw rewqr";
-	int d = countWords(s);
-	// assert
-	CU_ASSERT_DOUBLE_EQUAL(d, 3, EPSILON);
+    // arrange
+    // act
+    char s[] = "werewr rewqrw rewqr";
+    int d = countWords(s);
+    // assert
+    CU_ASSERT_DOUBLE_EQUAL(d, 3, EPSILON);
 }
 
 static void test_count_words_empty(void)
 {
-	// arrange
-	// act
-	char s[] = "";
-	int d = countWords(s);
-	// assert
-	CU_ASSERT_DOUBLE_EQUAL(d, 0, EPSILON);
+    // arrange
+    // act
+    char s[] = "";
+    int d = countWords(s);
+    // assert
+    CU_ASSERT_DOUBLE_EQUAL(d, 0, EPSILON);
 }
 
 /**
@@ -62,9 +62,7 @@ static void test_count_words_empty(void)
  */
 int main(void)
 {
-	// setup, run, teardown
-	TestMainBasic("Test word count", setup, teardown,
-		test_count_words,
-		test_count_words_empty
-	);
+    // setup, run, teardown
+    TestMainBasic("Test word count", setup, teardown, test_count_words,
+        test_count_words_empty);
 }

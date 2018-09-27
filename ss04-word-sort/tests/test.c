@@ -11,10 +11,10 @@
  * @file
  * @brief Lab implementation
  */
+#include "../../../testlib/src/test_utils.h"
+#include "CUnit/Basic.h"
 #include <stdio.h>
 #include <stdlib.h>
-#include "CUnit/Basic.h"
-#include "../../../testlib/src/test_utils.h"
 
 /// @brief The name of the STDOUT text file.
 #define OUTFILE "stdout.txt"
@@ -31,40 +31,41 @@
 // setup & cleanup
 static int setup(void)
 {
-	remove_file_if_exists(OUTFILE);
-	remove_file_if_exists(ERRFILE);
-	return 0; // success
+    remove_file_if_exists(OUTFILE);
+    remove_file_if_exists(ERRFILE);
+    return 0; // success
 }
 
 static int teardown(void)
 {
-	// Do nothing.
-	// Especially: do not remove result files - they are removed in int setup(void) *before* running a test.
-	return 0; // success
+    // Do nothing.
+    // Especially: do not remove result files - they are removed in int
+    // setup(void) *before* running a test.
+    return 0; // success
 }
-
 
 // tests
 static void test_print_deduped_list(void)
 {
-	// arrange
-	const char *out_txt[] = {
-    "Geben Sie Woerter ein:\n",
-    "--------------\n",
-    "----Sorted----\n",
-    "--------------\n",
-    "aaa\n",
-    "aaaa\n",
-    "bbb\n",
-    "bbbbbb\n",
-    "--------------\n",
-	};
-	// act
-  // system("../bin/wordSort  1> stdout.txt 2> stderr.txt < test.input");
-	int exit_code = system(XSTR(TARGET) " 1>" OUTFILE " 2>" ERRFILE " <" INFILE);
-	// assert
-	CU_ASSERT_EQUAL(exit_code, 0);
-	assert_lines(OUTFILE, out_txt, sizeof(out_txt)/sizeof(*out_txt));
+    // arrange
+    const char *out_txt[] = {
+        "Geben Sie Woerter ein:\n",
+        "--------------\n",
+        "----Sorted----\n",
+        "--------------\n",
+        "aaa\n",
+        "aaaa\n",
+        "bbb\n",
+        "bbbbbb\n",
+        "--------------\n",
+    };
+    // act
+    // system("../bin/wordSort  1> stdout.txt 2> stderr.txt < test.input");
+    int exit_code
+        = system(XSTR(TARGET) " 1>" OUTFILE " 2>" ERRFILE " <" INFILE);
+    // assert
+    CU_ASSERT_EQUAL(exit_code, 0);
+    assert_lines(OUTFILE, out_txt, sizeof(out_txt) / sizeof(*out_txt));
 }
 
 /**
@@ -72,8 +73,6 @@ static void test_print_deduped_list(void)
  */
 int main(void)
 {
-	// setup, run, teardown
-	TestMainBasic("Wordsort", setup, teardown,
-    test_print_deduped_list
-	);
+    // setup, run, teardown
+    TestMainBasic("Wordsort", setup, teardown, test_print_deduped_list);
 }

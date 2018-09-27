@@ -16,8 +16,10 @@ typedef struct {
 
 int calcRoundedMark(int maxPoints, int points);
 
-stats calcStats(const int maxPoints, const int points[MAX_POINTS_SIZE], const int studentsAmount);
+stats calcStats(const int maxPoints, const int points[MAX_POINTS_SIZE],
+    const int studentsAmount);
 
-void printStats(const int maxPoints, const int studentsAmount, const stats stats);
+void printStats(
+    const int maxPoints, const int studentsAmount, const stats stats);
 
 #endif

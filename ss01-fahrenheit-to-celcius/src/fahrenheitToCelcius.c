@@ -1,6 +1,6 @@
+#include "fahrenheitToCelcius.h"
 #include <stdio.h>
 #include <stdlib.h>
-#include "fahrenheitToCelcius.h"
 
 double fahrenheitToCelcius(const int fahrenheit)
 {
@@ -11,7 +11,7 @@ void printTemparatureTable(const int MIN, const int MAX, const int STEP)
 {
     printf("Fahrenheit\tCelcius\n");
     printf("-----------------------\n");
-    for(int i = MIN; i <= MAX; i+=STEP) {
+    for (int i = MIN; i <= MAX; i += STEP) {
         printf("%4d\t\t%7.2f\n", i, fahrenheitToCelcius(i));
     }
 }

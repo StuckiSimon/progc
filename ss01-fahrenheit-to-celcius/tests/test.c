@@ -11,11 +11,11 @@
  * @file
  * @brief Test suite for the given package.
  */
+#include "../../../testlib/src/test_utils.h"
+#include "CUnit/Basic.h"
+#include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <math.h>
-#include "CUnit/Basic.h"
-#include "../../../testlib/src/test_utils.h"
 
 /// UUT - Unit-Under-Test
 double fahrenheitToCelcius(int f);
@@ -26,26 +26,26 @@ double fahrenheitToCelcius(int f);
 // setup & cleanup
 static int setup(void)
 {
-	// Do nothing.
-	return 0; // success
+    // Do nothing.
+    return 0; // success
 }
 
 static int teardown(void)
 {
-	// Do nothing.
-	return 0; // success
+    // Do nothing.
+    return 0; // success
 }
 
 // tests
 static void test_fahrenheit_to_celcius(void)
 {
-	// arrange
-	// act
-	// assert
-	CU_ASSERT_DOUBLE_EQUAL(fahrenheitToCelcius(-20), -28.89, EPSILON);
-	CU_ASSERT_DOUBLE_EQUAL(fahrenheitToCelcius(0), -17.78, EPSILON);
-	CU_ASSERT_DOUBLE_EQUAL(fahrenheitToCelcius(40), 4.44, EPSILON);
-	CU_ASSERT_DOUBLE_EQUAL(fahrenheitToCelcius(120), 48.89, EPSILON);
+    // arrange
+    // act
+    // assert
+    CU_ASSERT_DOUBLE_EQUAL(fahrenheitToCelcius(-20), -28.89, EPSILON);
+    CU_ASSERT_DOUBLE_EQUAL(fahrenheitToCelcius(0), -17.78, EPSILON);
+    CU_ASSERT_DOUBLE_EQUAL(fahrenheitToCelcius(40), 4.44, EPSILON);
+    CU_ASSERT_DOUBLE_EQUAL(fahrenheitToCelcius(120), 48.89, EPSILON);
 }
 
 /**
@@ -53,8 +53,7 @@ static void test_fahrenheit_to_celcius(void)
  */
 int main(void)
 {
-	// setup, run, teardown
-	TestMainBasic("Test fahrenheit to celcius converter", setup, teardown,
-		test_fahrenheit_to_celcius
-	);
+    // setup, run, teardown
+    TestMainBasic("Test fahrenheit to celcius converter", setup, teardown,
+        test_fahrenheit_to_celcius);
 }

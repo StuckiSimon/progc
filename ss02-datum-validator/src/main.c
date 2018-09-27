@@ -10,15 +10,16 @@
  * converts user input to date (Format: dd.mm.YYYY)
  * and prints the next day
  */
+#include "nextDate.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "nextDate.h"
 
 #define MAX_STRING_SIZE 10 + 1
 
-char* readInput() {
-    (void) printf("Enter a date (dd.mm.yyyy):\t");
+char *readInput()
+{
+    (void)printf("Enter a date (dd.mm.yyyy):\t");
     char *text = malloc(MAX_STRING_SIZE * sizeof(const char));
     fgets(text, MAX_STRING_SIZE, stdin);
     if ((strlen(text) > 0) && (text[strlen(text) - 1] == '\n'))
@@ -33,7 +34,7 @@ char* readInput() {
  */
 int main(void)
 {
-    struct tm date = {0};
+    struct tm date = { 0 };
     char *input = readInput();
 
     // parse user input to date
@@ -42,6 +43,6 @@ int main(void)
         return EXIT_FAILURE;
     }
     date = getNextDayDate(date);
-    (void) printNextDay(date);
+    (void)printNextDay(date);
     return EXIT_SUCCESS;
 }
