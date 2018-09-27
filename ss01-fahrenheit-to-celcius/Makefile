@@ -11,7 +11,7 @@ FULLTARGET    := $(CURDIR)/$(TARGET)
 SOURCES       := src/main.c src/parseArgs.c src/fahrenheitToCelcius.c
 
 CUNITLIBDIR   := $(CURDIR)/../../CUnit/lib
-TSTLIBDIR     := $(CURDIR)/../../lib
+TSTLIBDIR     := $(CURDIR)/../testlib/bin
 
 TSTSOURCES    := tests/test.c
 

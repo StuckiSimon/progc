@@ -11,7 +11,7 @@
  * @file
  * @brief Lab implementation
  */
-#include "../../../testlib/src/test_utils.h"
+#include "../../testlib/include/test_utils.h"
 #include "CUnit/Basic.h"
 #include <stdio.h>
 #include <stdlib.h>

@@ -11,7 +11,7 @@
  * @file
  * @brief Test suite for the given package.
  */
-#include "../../../testlib/src/test_utils.h"
+#include "../../testlib/include/test_utils.h"
 #include "../src/markStats.h"
 #include "CUnit/Basic.h"
 #include <math.h>
