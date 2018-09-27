@@ -16,14 +16,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void readMinPoints(int *minPoints)
+static void readmin_points(int *min_points)
 {
     (void)printf("How many points are needed for mark 6? ");
-    scanf("%5d", minPoints);
+    scanf("%5d", min_points);
     (void)printf("\n");
 }
 
-int readPoints(int points[MAX_POINTS_SIZE], int *pointsLen)
+static int read_points(int points[MAX_POINTS_SIZE], int *points_len)
 {
     (void)printf("Type in the points of your students:\n");
     int i = 0;
@@ -38,13 +38,14 @@ int readPoints(int points[MAX_POINTS_SIZE], int *pointsLen)
     } while (point >= 0);
 
     // if input is -1 the user broke out correctly.
+    int exit_code = EXIT_FAILURE;
     if (point == -1) {
-        *pointsLen = i;
-        return 1;
+        *points_len = i;
+        exit_code = EXIT_SUCCESS;
     }
     // Otherwise there was an illegal input
     (void)printf("Illegal input!\n");
-    return 0;
+    return exit_code;
 }
 
 /**
@@ -56,24 +57,24 @@ int main(void)
 {
     (void)printf("Generate stats: \n");
     int points[MAX_POINTS_SIZE];
-    int pointsLen;
-    int minPoints;
+    int points_len;
+    int min_points;
     int repeat;
 
-    if (readPoints(points, &pointsLen)) {
+    if (read_points(points, &points_len) == 0) {
         do {
             repeat = 0;
-            minPoints = 0;
-            (void)readMinPoints(&minPoints);
+            min_points = 0;
+            (void)readmin_points(&min_points);
 
-            if (minPoints == 0) {
+            if (min_points == 0) {
                 return EXIT_FAILURE;
             }
-            stats stats = calcStats(minPoints, points, pointsLen);
-            (void)printStats(minPoints, pointsLen, stats);
+            stats stats = calc_stats(min_points, points, points_len);
+            (void)print_stats(min_points, points_len, stats);
 
             (void)printf("Try out another metric? (Yes=1 / No=0) \n");
-            scanf("%1d", &repeat);
+            (void)scanf("%1d", &repeat);
         } while (repeat);
 
         return EXIT_SUCCESS;

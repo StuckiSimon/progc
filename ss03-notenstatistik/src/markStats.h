@@ -5,21 +5,21 @@
 #define MAX_POINTS_SIZE 100
 
 typedef struct {
-    int perMarkCount[6];
-    int worstMark;
-    int bestMark;
-    int markSum;
-    int averageMark;
-    int passedCount;
-    double passedPercent;
+    int per_mark_count[6];
+    int worst_mark;
+    int best_mark;
+    int mark_sum;
+    int average_mark;
+    int passed_count;
+    double passed_percent;
 } stats;
 
-int calcRoundedMark(int maxPoints, int points);
+int calc_rounded_mark(int max_points, int points);
 
-stats calcStats(const int maxPoints, const int points[MAX_POINTS_SIZE],
-    const int studentsAmount);
+stats calc_stats(const int max_points, const int points[MAX_POINTS_SIZE],
+    const int students_amount);
 
-void printStats(
-    const int maxPoints, const int studentsAmount, const stats stats);
+void print_stats(
+    const int max_points, const int students_amount, const stats stats);
 
 #endif
