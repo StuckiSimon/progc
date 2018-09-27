@@ -1,14 +1,51 @@
 CC      = gcc
 CFLAGS  = -g
+TARGET := bin/wordSort
 
-default: main run
+# directories to create (and remove upon cleanup)
+CREATEDIRS    := bin doc
 
-cr: main run
+# full path to the target
+FULLTARGET    := $(CURDIR)/$(TARGET)
 
-all: main
+SOURCES       := src/main.c
 
-main: ./src/main.c
-	$(CC) $(CFLAGS) -o ./src/main ./src/main.c
+CUNITLIBDIR   := $(CURDIR)/../../CUnit/lib
+TSTLIBDIR     := $(CURDIR)/../../lib
+
+TSTSOURCES    := tests/test.c
+
+OBJECTS       := $(SOURCES:%.c=%.o)
+TSTOBJECTS    := $(TSTSOURCES:%.c=%.o) # list of gcc -c  ... produced *.o files
+TSTDEPS       := $(TSTSOURCES:%.c=%.d) # list of gcc -MD ... produced *.d files
+TSTTARGET     := $(CURDIR)/tests/runtest
+
+default: $(FULLTARGET)
+	$(MAKE) run
+	@echo "#### $< built ####"
 
 run:
-	./src/main
+	$(TARGET)
+
+$(FULLTARGET): mkdir $(OBJECTS) Makefile
+	$(LINK.c) -o $@ $(OBJECTS)
+
+doc:
+	doxygen ../Doxyfile > /dev/null
+	@echo "#### $@ done ####"
+
+clean:
+	$(RM) $(TARGET) $(OBJECTS) $(DEPS) $(TSTTARGET) $(TSTOBJECTS) $(TSTDEPS) $(wildcard */*~ *~ tests/*.txt)
+	$(RM) -r $(CREATEDIRS)
+	@echo "#### $@ done ####"
+
+test: $(TSTTARGET)
+	(cd tests; $(TSTTARGET))
+	@echo "#### $< executed ####"
+
+$(TSTTARGET): $(FULLTARGET) $(TSTOBJECTS)
+	gcc -o $(TSTTARGET) tests/test.c -L$(CUNITLIBDIR) -lcunit -L$(TSTLIBDIR) -lprogctest
+	@echo "#### $@ built ####"
+
+mkdir:
+	-mkdir -p $(CREATEDIRS)

@@ -50,7 +50,7 @@ void printDedupedWordlist(char* words[MAX_WORD_COUNT], const int wordCount)
 
 int readWords(char* words[MAX_WORD_COUNT], int *wordCount)
 {
-    (void) printf("Geben Sie Wörter ein:\n");
+    (void) printf("Geben Sie Woerter ein:\n");
     int i = 0;
     char word[MAX_WORD_SIZE];
     int hasFailed = 0;
