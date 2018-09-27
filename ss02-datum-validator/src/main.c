@@ -21,9 +21,12 @@ static char *read_input()
 {
     (void)printf("Enter a date (dd.mm.yyyy):\t");
     char *text = malloc(MAX_STRING_SIZE * sizeof(const char));
-    (void)fgets(text, MAX_STRING_SIZE, stdin);
-    if ((strlen(text) > 0) && (text[strlen(text) - 1] == '\n'))
-        text[strlen(text) - 1] = '\0';
+
+    if (text != NULL) {
+      (void)fgets(text, MAX_STRING_SIZE, stdin);
+      if ((strlen(text) > 0) && (text[strlen(text) - 1] == '\n'))
+          text[strlen(text) - 1] = '\0';
+    }
     return text;
 }
 
@@ -36,6 +39,10 @@ int main(void)
 {
     struct tm date = { 0 };
     char *input = read_input();
+
+    if (input == NULL) {
+      return EXIT_FAILURE;
+    }
 
     // parse user input to date
     if (strptime(input, "%d.%m.%Y", &date) == NULL) {

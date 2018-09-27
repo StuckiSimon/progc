@@ -34,6 +34,10 @@ int main(void)
     int char_count = 0;
     char *text = malloc(MAX_STRING_SIZE);
 
+    if (text == NULL) {
+      return EXIT_FAILURE;
+    }
+
     text = readAndParseInput(text);
 
     char_count = strlen(text);
