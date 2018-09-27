@@ -24,8 +24,8 @@ static char *read_input()
 
     if (text != NULL) {
       (void)fgets(text, MAX_STRING_SIZE, stdin);
-      if ((strlen(text) > 0) && (text[strlen(text) - 1] == '\n'))
-          text[strlen(text) - 1] = '\0';
+      if ((strnlen(text,MAX_STRING_SIZE) > 0) && (text[strnlen(text,MAX_STRING_SIZE) - 1] == '\n'))
+          text[strnlen(text,MAX_STRING_SIZE) - 1] = '\0';
     }
     return text;
 }

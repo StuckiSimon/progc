@@ -18,8 +18,8 @@
 static char *readAndParseInput(char *text)
 {
     fgets(text, MAX_STRING_SIZE, stdin);
-    if ((strlen(text) > 0) && (text[strlen(text) - 1] == '\n'))
-        text[strlen(text) - 1] = '\0';
+    if ((strnlen(text, MAX_STRING_SIZE) > 0) && (text[strnlen(text, MAX_STRING_SIZE) - 1] == '\n'))
+        text[strnlen(text, MAX_STRING_SIZE) - 1] = '\0';
 
     return text;
 }
@@ -40,7 +40,7 @@ int main(void)
 
     text = readAndParseInput(text);
 
-    char_count = strlen(text);
+    char_count = strnlen(text, MAX_STRING_SIZE);
 
     word_count = count_words(text);
 
