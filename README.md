@@ -7,3 +7,7 @@ This repository contains a list of small C projects.
 - MacOS
 - `doxygen`
 - `cunit`
+
+## Testlib
+
+Build `testlib` before using `make test` in any project.
