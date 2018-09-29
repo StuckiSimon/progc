@@ -10,10 +10,9 @@
 ListElement *create_new_list_element(void)
 {
     ListElement *newElement = malloc(sizeof(ListElement));
-    if (newElement == NULL) {
-        return NULL;
+    if (newElement != NULL) {
+        (void)create_person(&newElement->content);
     }
-    (void)create_person(&newElement->content);
     return newElement;
 }
 
