@@ -48,7 +48,7 @@ static void scan_text_with_prompt(char *value, const char *label)
     do {
         (void)printf("%s\n", label);
         (void)scan_text(value);
-    } while (!is_valid_string(value));
+    } while (!is_valid_string(value, STRING_LENGTH));
 }
 
 static void scan_number(unsigned *value)
