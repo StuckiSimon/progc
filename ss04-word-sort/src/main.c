@@ -32,20 +32,30 @@ static void print_deduped_word_list(char* words[MAX_WORD_COUNT], const int word_
   char* deduped[MAX_WORD_COUNT];
   int deduped_word_count = 0;
   for(int i = 0; i < word_count; i++) {
-    // if the last word is not equal this one, add it to the new array
-    if (i == 0 || strncmp(words[i-1], words[i], MAX_WORD_SIZE) != 0) {
-        // store word in deduped array
-        deduped[deduped_word_count] = words[i];
-        deduped_word_count += 1;
-    }
+      // if the last word is not equal this one, add it to the new array
+      if (i == 0 || strncmp(words[i-1], words[i], MAX_WORD_SIZE) != 0) {
+          // store word in deduped array
+          deduped[deduped_word_count] = words[i];
+          deduped_word_count += 1;
+      }
   }
   (void) printf("--------------\n");
   (void) printf("----Sorted----\n");
   (void) printf("--------------\n");
   for(int i = 0; i < deduped_word_count; i++) {
-    (void) printf("%s\n", deduped[i]);
+      (void) printf("%s\n", deduped[i]);
   }
   (void) printf("--------------\n");
+}
+
+static int check_pointer(char* pointer)
+{
+    int return_code = 0;
+    if (pointer == NULL) {
+        (void) printf("not enough memory\n");
+        return_code = 1;
+    }
+    return return_code;
 }
 
 static int read_words(char* words[MAX_WORD_COUNT], int *word_count)
@@ -61,10 +71,7 @@ static int read_words(char* words[MAX_WORD_COUNT], int *word_count)
         int len = strnlen(word, MAX_WORD_SIZE);
         if (len >= 0 && strncmp(END_WORD, word, MAX_WORD_SIZE) != 0) {
             new_word = (char *) malloc(len * sizeof(char));
-            if (new_word == NULL) {
-                (void) printf("not enough memory\n");
-                has_failed = 1;
-            }
+            has_failed = check_pointer(new_word);
             strncpy(new_word, word, MAX_WORD_SIZE);
             words[i] = new_word;
             i++;
