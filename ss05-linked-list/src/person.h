@@ -16,10 +16,16 @@ typedef struct {
     unsigned age;
 } Person;
 
+/**
+ * @return negative: uno < duo, positive: uno > duo, 0: uno = duo
+ */
 int compare_person(const Person *uno, const Person *duo);
 
 void create_person(Person *person);
 
+/**
+ * print a person to stdout
+ **/
 void print_person(Person *person);
 
 #endif
