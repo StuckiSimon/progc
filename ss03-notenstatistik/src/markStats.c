@@ -11,11 +11,11 @@ int calc_rounded_mark(int max_points, int points)
     if (rest >= 0.5) {
         result += 1;
     }
-    if (result > 6) {
-        result = 6;
+    if (result > BEST_MARK) {
+        result = BEST_MARK;
     }
-    if (result < 1) {
-        result = 1;
+    if (result < WORST_MARK) {
+        result = WORST_MARK;
     }
     return result;
 }
@@ -24,7 +24,7 @@ stats calc_stats(const int max_points, const int points[MAX_POINTS_SIZE],
     const int students_amount)
 {
     stats stats = { { 0 } };
-    stats.worst_mark = 6;
+    stats.worst_mark = BEST_MARK;
     stats.best_mark = 0;
     stats.mark_sum = 0;
     stats.average_mark = 0;

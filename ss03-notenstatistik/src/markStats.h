@@ -4,6 +4,9 @@
 
 #define MAX_POINTS_SIZE 100
 
+#define BEST_MARK 6
+#define WORST_MARK 1
+
 typedef struct {
     int per_mark_count[6];
     int worst_mark;
