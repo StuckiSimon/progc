@@ -42,9 +42,10 @@ static int read_points(int points[MAX_POINTS_SIZE], int *points_len)
     if (point == -1) {
         *points_len = i;
         exit_code = EXIT_SUCCESS;
+    } else {
+      // Otherwise there was an illegal input
+      (void)printf("Illegal input!\n");
     }
-    // Otherwise there was an illegal input
-    (void)printf("Illegal input!\n");
     return exit_code;
 }
 
